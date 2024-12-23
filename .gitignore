@@ -178,9 +178,6 @@ cython_debug/
 .vscode
 
 # datasets and models
-src/data/data
-src/data/test_data
-src/data/models
 /data/models-for-hackathon.zip
 /data/test_data
 /data/train_data
