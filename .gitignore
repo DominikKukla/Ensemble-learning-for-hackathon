@@ -182,3 +182,4 @@ cython_debug/
 src/data/data
 src/data/test_data
 src/data/models
+data/models-for-hackathon.zip
