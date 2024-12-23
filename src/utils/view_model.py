@@ -29,10 +29,13 @@ def plot_training_metrics(
 
     # Plot train and validation loss on the left y-axis
     ax1.plot(  # type: ignore
-        np.arange(1, len(losses_train) + 1), losses_train, color="r", label="Train loss"
+        np.arange(1, len(losses_train) + 1),  # type: ignore
+        losses_train,
+        color="r",
+        label="Train loss",
     )
     ax1.plot(  # type: ignore
-        np.arange(1, len(losses_val) + 1),
+        np.arange(1, len(losses_val) + 1),  # type: ignore
         losses_val,
         "-gD",
         label="Test loss",
@@ -56,7 +59,7 @@ def plot_training_metrics(
     # Create the second y-axis for F1 metric
     ax2 = ax1.twinx()
     ax2.plot(  # type: ignore
-        np.arange(1, len(f1_metric_val) + 1),
+        np.arange(1, len(f1_metric_val) + 1),  # type: ignore
         f1_metric_val,
         color="blue",
         label="F1 Metric (Val)",
