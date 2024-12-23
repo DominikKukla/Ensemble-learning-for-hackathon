@@ -3,11 +3,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-/data/test_data
-/data/train_data
-/data/models
-.pre-commit-config.yaml
-
 # C extensions
 *.so
 
@@ -186,4 +181,11 @@ cython_debug/
 src/data/data
 src/data/test_data
 src/data/models
-data/models-for-hackathon.zip
+/data/models-for-hackathon.zip
+/data/test_data
+/data/train_data
+/data/models
+/data/plots/*.png
+
+# pre-commit
+.pre-commit-config.yaml
