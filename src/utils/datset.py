@@ -7,13 +7,13 @@ from torchvision import datasets, transforms  # type: ignore
 
 
 class Data:
-    def __init__(self):
+    def __init__(self) -> None:
         kaggle.api.authenticate()
         root_folder = Path(__file__).parent.parent.parent
         self.download_folder = root_folder / "data"
         self.size_tuple = (224, 224)
 
-    def download_from_kaggle(self):
+    def download_from_kaggle(self) -> None:
         self.download_folder.mkdir(exist_ok=True)
         kaggle.api.dataset_download_files(  # type: ignore
             "dzmitrypihulski/hackathon-dataset",
