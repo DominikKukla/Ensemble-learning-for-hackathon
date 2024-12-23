@@ -171,6 +171,13 @@ class EnsembleTrainer:
                 model, self.optimizers[name], train_loader, validation_loader, name
             )
 
+    def plot_models(self, Models: Models):
+        # Plot each model
+        for name in self.models.keys():
+            Models.plot_training_metrics(
+                str(self.models_folder) + f"/{name}_best_f1.pth", name
+            )
+
     def ensemble_predict(self, dataloader: DataLoader[Any]) -> float:
         # Weighted voting ensemble prediction
         all_ensemble_preds = []
@@ -229,6 +236,9 @@ if __name__ == "__main__":
 
     # Train all models
     ensemble_trainer.train_ensemble(train_loader, validation_loader)
+
+    # Plot all models
+    ensemble_trainer.plot_models(models)
 
     # Perform ensemble prediction
     ensemble_f1 = ensemble_trainer.ensemble_predict(validation_loader)
