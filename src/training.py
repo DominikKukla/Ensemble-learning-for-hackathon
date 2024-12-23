@@ -69,7 +69,7 @@ class EnsembleTrainer:
         train_loader: DataLoader[Any],
         validation_loader: DataLoader[Any],
         model_name: str,
-    ):
+    ) -> None:
         for epoch in range(1, self.max_epochs + 1):  # Your original epoch range
             current_time = time.time()
 
@@ -163,7 +163,7 @@ class EnsembleTrainer:
 
     def train_ensemble(
         self, train_loader: DataLoader[Any], validation_loader: DataLoader[Any]
-    ):
+    ) -> None:
         # Train each model
         for name, model in self.models.items():
             print(f"\nTraining {name}")
@@ -171,7 +171,7 @@ class EnsembleTrainer:
                 model, self.optimizers[name], train_loader, validation_loader, name
             )
 
-    def plot_models(self, Models: Models):
+    def plot_models(self, Models: Models) -> None:
         # Plot each model
         for name in self.models.keys():
             Models.plot_training_metrics(

@@ -3,7 +3,7 @@ import random
 import torch
 
 
-def set_seed(seed_value: int):
+def set_seed(seed_value: int) -> None:
     random.seed(seed_value)
     torch.manual_seed(seed_value)  # type: ignore
     if torch.cuda.is_available():
