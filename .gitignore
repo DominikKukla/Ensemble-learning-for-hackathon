@@ -3,6 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+/data/test_data
+/data/train_data
+/data/models
+.pre-commit-config.yaml
+
 # C extensions
 *.so
 
