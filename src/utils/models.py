@@ -170,4 +170,4 @@ class Models:
         ax1.legend(lines1 + lines2, labels1 + labels2, loc="upper left")  # type: ignore
 
         plt.title(f"Train and Val loss, F1 Metric after {len(losses_train)} epochs")  # type: ignore
-        plt.savefig(f"data/plots/{name_of_the_net}.png")  # type: ignore
+        plt.savefig(f"data/images/{name_of_the_net}.png")  # type: ignore
