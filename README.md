@@ -37,8 +37,17 @@ The models used in this project are:
 
 The learning curves for two models are down below:
 
-<img src="data/images/mobilenet_v3_large.png" width="700" />
-<img src="data/images/shufflenet_v2_x2_0.png" width="700" />
+<table>
+  <tr>
+    <td><img src="data/images/efficientnet_b0.png" width="700"></td>
+    <td><img src="data/images/efficientnet_b1.png" width="700"></td>
+  </tr>
+  <tr>
+    <td><img src="data/images/mobilenet_v3_large.png" width="700"></td>
+    <td><img src="data/images/shufflenet_v2_x2_0.png" width="700"></td>
+  </tr>
+</table>
+
 
 ### Ensembles and Weights
 
@@ -46,7 +55,7 @@ In this project, an **ensemble learning** approach has been used with **weighted
 
 ### Selection of Final Models
 
-The final four models for the ensemble were selected through an automated process of testing every combination of the models with weight powers (in the weighted voting scheme) ranging from 1 to 10. The combination with the highest **F1 score** on the test set was chosen as the final ensemble. **The first four models shown in the table above have made their way to the final ensemble.**
+The final four models for the ensemble were selected through an automated process of testing every combination of the models with weight powers (in the weighted voting scheme) ranging from 1 to 10. The combination with the highest **F1 score** on the test set was chosen as the final ensemble. **The models whose training curves are shown above have made their way to the final ensemble.**
 
 ### Transformations
 

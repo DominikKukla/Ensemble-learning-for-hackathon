@@ -120,7 +120,7 @@ class Models:
         f1_metric_val = checkpoint["f1_metric_val"]
 
         plt.figure(figsize=(10, 7))  # type: ignore
-        marker_on = [losses_val.index(min(losses_val))]
+        # marker_on = [losses_val.index(min(losses_val))]
 
         # Create the first plot with the left y-axis
         fig, ax1 = plt.subplots(figsize=(10, 7))  # type: ignore
@@ -135,20 +135,21 @@ class Models:
         ax1.plot(  # type: ignore
             np.arange(1, len(losses_val) + 1),  # type: ignore
             losses_val,
-            "-gD",
+            "-g",
+            # "-gD",
             label="Val loss",
-            markevery=marker_on,
+            # markevery=marker_on,
         )
 
         # Annotate the minimum loss point
-        bbox = dict(boxstyle="round", fc="0.8")
-        ax1.annotate(  # type: ignore
-            text=f"Max F1 score after {f1_metric_val.index(max(f1_metric_val))+1} epochs, equals: {max(f1_metric_val)}",
-            xy=(losses_val.index(min(losses_val)) + 1, min(losses_val)),
-            xytext=(losses_val.index(min(losses_val)) + 1, min(losses_val) + 0.05),
-            arrowprops=dict(facecolor="green", shrink=0.2),
-            bbox=bbox,
-        )
+        # bbox = dict(boxstyle="round", fc="0.8")
+        # ax1.annotate(  # type: ignore
+        #     text=f"Max F1 score after {f1_metric_val.index(max(f1_metric_val))+1} epochs, equals: {max(f1_metric_val)}",
+        #     xy=(losses_val.index(min(losses_val)) + 1, min(losses_val)),
+        #     xytext=(losses_val.index(min(losses_val)) + 1, min(losses_val) + 0.05),
+        #     arrowprops=dict(facecolor="green", shrink=0.2),
+        #     bbox=bbox,
+        # )
 
         ax1.set_xlabel("Epoch")  # type: ignore
         ax1.set_ylabel("CrossEntropyLoss")  # type: ignore
@@ -169,5 +170,7 @@ class Models:
         lines2, labels2 = ax2.get_legend_handles_labels()
         ax1.legend(lines1 + lines2, labels1 + labels2, loc="upper left")  # type: ignore
 
-        plt.title(f"Train and Val loss, F1 Metric after {len(losses_train)} epochs")  # type: ignore
+        plt.title(
+            f"{name_of_the_net} - Train and Val loss, F1 Metric after {len(losses_train)} epochs"
+        )  # type: ignore
         plt.savefig(str(self.root_folder) + f"/data/images/{name_of_the_net}.png")  # type: ignore
