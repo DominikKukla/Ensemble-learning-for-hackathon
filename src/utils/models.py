@@ -12,8 +12,8 @@ from torchvision import models  # type: ignore
 class Models:
     def __init__(self) -> None:
         kaggle.api.authenticate()
-        root_folder = Path(__file__).parent.parent.parent
-        self.download_folder = root_folder / "data" / "models"
+        self.root_folder = Path(__file__).parent.parent.parent
+        self.download_folder = self.root_folder / "data" / "models"
         self.size_tuple = (224, 224)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model_weights: Dict[str, float] = dict()
@@ -136,7 +136,7 @@ class Models:
             np.arange(1, len(losses_val) + 1),  # type: ignore
             losses_val,
             "-gD",
-            label="Test loss",
+            label="Val loss",
             markevery=marker_on,
         )
 
@@ -170,4 +170,4 @@ class Models:
         ax1.legend(lines1 + lines2, labels1 + labels2, loc="upper left")  # type: ignore
 
         plt.title(f"Train and Val loss, F1 Metric after {len(losses_train)} epochs")  # type: ignore
-        plt.savefig(f"data/images/{name_of_the_net}.png")  # type: ignore
+        plt.savefig(str(self.root_folder) + f"/data/images/{name_of_the_net}.png")  # type: ignore
