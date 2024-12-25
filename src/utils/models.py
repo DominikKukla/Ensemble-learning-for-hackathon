@@ -144,9 +144,9 @@ class Models:
         # Annotate the minimum loss point
         # bbox = dict(boxstyle="round", fc="0.8")
         # ax1.annotate(  # type: ignore
-        #     text=f"Max F1 score after {f1_metric_val.index(max(f1_metric_val))+1} epochs, equals: {max(f1_metric_val)}",
-        #     xy=(losses_val.index(min(losses_val)) + 1, min(losses_val)),
-        #     xytext=(losses_val.index(min(losses_val)) + 1, min(losses_val) + 0.05),
+        #     text=f"Max F1 score after {f1_metric_val.index(max(f1_metric_val))+1} epochs, equals: {round(max(f1_metric_val), 2)}",
+        #     xy=(f1_metric_val.index(max(f1_metric_val)) + 1, max(f1_metric_val)),
+        #     xytext=(f1_metric_val.index(max(f1_metric_val)) + 1, max(f1_metric_val) + 0.05),
         #     arrowprops=dict(facecolor="green", shrink=0.2),
         #     bbox=bbox,
         # )
