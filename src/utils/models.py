@@ -120,7 +120,6 @@ class Models:
         f1_metric_val = checkpoint["f1_metric_val"]
 
         plt.figure(figsize=(10, 7))  # type: ignore
-        # marker_on = [losses_val.index(min(losses_val))]
 
         # Create the first plot with the left y-axis
         fig, ax1 = plt.subplots(figsize=(10, 7))  # type: ignore
@@ -141,36 +140,49 @@ class Models:
             # markevery=marker_on,
         )
 
-        # Annotate the minimum loss point
-        # bbox = dict(boxstyle="round", fc="0.8")
-        # ax1.annotate(  # type: ignore
-        #     text=f"Max F1 score after {f1_metric_val.index(max(f1_metric_val))+1} epochs, equals: {round(max(f1_metric_val), 2)}",
-        #     xy=(f1_metric_val.index(max(f1_metric_val)) + 1, max(f1_metric_val)),
-        #     xytext=(f1_metric_val.index(max(f1_metric_val)) + 1, max(f1_metric_val) + 0.05),
-        #     arrowprops=dict(facecolor="green", shrink=0.2),
-        #     bbox=bbox,
-        # )
-
         ax1.set_xlabel("Epoch")  # type: ignore
         ax1.set_ylabel("CrossEntropyLoss")  # type: ignore
         ax1.grid()  # type: ignore
 
         # Create the second y-axis for F1 metric
+        marker_on = [f1_metric_val.index(max(f1_metric_val))]
         ax2 = ax1.twinx()
         ax2.plot(  # type: ignore
             np.arange(1, len(f1_metric_val) + 1),  # type: ignore
             f1_metric_val,
-            color="blue",
+            "-bD",
             label="F1 Metric (Val)",
+            markevery=marker_on,
         )
         ax2.set_ylabel("f1_metric_val")  # type: ignore
+
+        # Annotate the minimum loss point
+        bbox = dict(boxstyle="round", fc="0.8")
+        ax2.annotate(  # type: ignore
+            text=f"Max F1 score after {f1_metric_val.index(max(f1_metric_val))+1} epochs, equals: {round(max(f1_metric_val), 3)}",
+            xy=(
+                f1_metric_val.index(max(f1_metric_val)) + 1,
+                max(f1_metric_val),
+            ),
+            xytext=(
+                f1_metric_val.index(max(f1_metric_val)) + 1,
+                max(f1_metric_val) - 0.015,
+            ),
+            arrowprops=dict(
+                facecolor="gray", shrink=0.1, connectionstyle="arc3,rad=0.3"
+            ),
+            bbox=bbox,
+            ha="right",
+            va="center",
+        )
 
         # Combine legends
         lines1, labels1 = ax1.get_legend_handles_labels()
         lines2, labels2 = ax2.get_legend_handles_labels()
         ax1.legend(lines1 + lines2, labels1 + labels2, loc="upper left")  # type: ignore
+        ax2.set_ylim(ymax=(max(f1_metric_val) * 1.015))
 
-        plt.title(
+        plt.title(  # type: ignore
             f"{name_of_the_net} - Train and Val loss, F1 Metric after {len(losses_train)} epochs"
         )  # type: ignore
         plt.savefig(str(self.root_folder) + f"/data/images/{name_of_the_net}.png")  # type: ignore
