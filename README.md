@@ -1,5 +1,9 @@
 # Ensemble Fine-Tuned CNN Models for Polish Christmas Dishes Classification
 
+This project was jointly developed by:
+- [Dominik Kukla](https://github.com/DominikKukla)
+- [Dzmitry Pihulski](https://github.com/DzmitryPihulski)
+
 ## Description
 
 This repository demonstrates the use of ensemble learning with fine-tuned CNN models for the classification of traditional Polish Christmas dishes. The project was developed as a part of an image classification hackathon.
