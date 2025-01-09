@@ -75,5 +75,5 @@ The dataset was preprocessed and augmented with a [transform pipeline](/src/util
 To clone the repository, use the command:
 
 ```bash
-git clone https://github.com/DzmitryPihulski/ensemble-finetuned-models.git
+git clone https://github.com/DominikKukla/Ensemble-learning-for-hackathon.git
 ```
